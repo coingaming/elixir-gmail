@@ -11,7 +11,7 @@ defmodule Gmail.MessageAttachmentTest do
     Application.put_env :gmail, :api, %{url: "http://localhost:#{bypass.port}/gmail/v1/"}
     Gmail.User.stop_mail(user_id)
 
-    with_mock Gmail.OAuth2, [refresh_access_token: fn(_) -> {access_token, 100000000000000} end] do
+    with_mock Gmail.OAuth2, [refresh_access_token: fn(_) -> {access_token, 100_000_000_000_000} end] do
       {:ok, _server_pid} = Gmail.User.start_mail(user_id, "dummy-refresh-token")
     end
 
